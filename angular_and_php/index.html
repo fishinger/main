@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src='js/angular-1.2.26/angular.min.js'></script>
+	<script src='js/app.js'></script>
+</head>
+<body ng-app="restApp" ng-controller="mainCtrl">
+	<button class='add' ng-click='open()'>Add</button>
+	<div class="container" ng-repeat='item in phones'>
+		{{item.name}} | {{item.price}}
+	</div>
+	<script src='main.js'></script>
+</body>
+</html>

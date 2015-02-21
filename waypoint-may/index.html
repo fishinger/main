@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li class='nav__btn'><a href="#home">Home</a></li>
+			<li class='nav__btn'><a href="#about">About</a></li>
+			<li class='nav__btn'><a href="#products">products</a></li>
+			<li class='nav__btn'><a href="#partners">partners</a></li>
+			<li class='nav__btn'><a href="#contacts">contacts</a></li>
+		</ul>
+	</nav>
+	<div class="container">
+		<section class='section' data-section='home'>
+			<h1>Home</h1>
+		</section>
+		<section class='section' data-section='about'>
+			<h1>about</h1>
+		</section>
+		<section class='section' data-section='products'>
+			<h1>products</h1>
+		</section>
+		<section class='section' data-section='partners'>
+			<h1>partners</h1>
+		</section>
+		<section class='section' data-section='contacts'>
+			<h1>contacts</h1>
+		</section>
+	</div>
+	<script>
+		var showSection = function(section, isAnimate){
+			var
+				hasSec = section.replace('#', ''),
+				newSec = $('section').filter('[data-section="' + hasSec + '"]'),
+				posSec = newSec.offset().top;
+			if(isAnimate){
+				$('html, body').animate({scrollTop: posSec}, 500);
+			} else {
+				$('html, body').scrollTop(posSec);
+			}
+		}
+		var activsection = function(){
+			$('.section').each(function(e){
+				var $this = $(this),
+					topSec = $this.offset().top - 200,
+					botSec = $this.height() + topSec,
+					winScroll = $(window).scrollTop();
+				if(topSec < winScroll && botSec > winScroll){
+					var secId = $this.data('section'),
+						activLink = $('.nav__btn a').filter('[href="#' + secId + '"]');
+					activLink.closest('li').addClass('active')
+					.siblings().removeClass('active');
+					window.location.hash = secId;
+				}
+			})
+		}
+		$(window).scroll(function(){
+			activsection();
+		})
+		$(document).ready(function(){
+			showSection(window.location.hash, false);
+			$('nav ul li a').on('click', function(e){
+				e.preventDefault();
+				showSection($(this).attr('href'), true);
+			})
+		})
+	</script>
+</body>
+</html>

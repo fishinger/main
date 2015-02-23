@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="parsley.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="parsley.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<form class="form-horizontal" id='form' role="form" data-parsley-validate>
+		  <div class="form-group">
+		    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+		    <div class="col-sm-10">
+		      <input type="email" 
+		      	class="form-control" 
+		      	data-parsley-type="email" 
+		      	id="inputEmail3" 
+		      	placeholder="Email" 
+		      	required 
+		      	data-parsley-required-message="Поле должно быть заполнено" 
+		      	data-parsley-type-message="Некорректный адрес почты" 
+		      	data-parsley-trigger="keyup"
+		      	data-parsley-validation-threshold="10"> <!-- начинать проверку с 11 символа -->
+		    </div>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="inputPassword4" class="col-sm-2 control-label">Пароль</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" 
+		      	id="inputPassword4" 
+		      	placeholder="Password" 
+		      	required 
+		      	data-parsley-type="number" 
+		      	data-parsley-minlength="3" 
+		      	data-parsley-maxlength="6" 
+		      	data-parsley-error-message="Пароль должен состоять из цифр от 3 до 6" 
+		      	data-parsley-trigger="change"
+		      	data-parsley-gt="123"
+		      	data-parsley-trigger="keyup"
+		      	data-parsley-validation-threshold="3" 
+		      	data-parsley-range="[6, 500]"> <!-- вход числа в диапазон -->
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <button type="submit" class="btn btn-default">Войти</button>
+		    </div>
+		  </div>
+		</form>
+	</div>
+	<script src='js/main.js'></script>
+	<script>
+		$('#form').parsley();
+	</script>
+</body>
+</html>
